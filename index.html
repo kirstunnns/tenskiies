@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Number Validator</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            background-color: #fce4ec; /* Soft pink background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+            border: 2px solid #f4a1c2; /* Cute soft pink border */
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #f06292; /* Soft pink color */
+            margin-bottom: 25px;
+            font-family: 'Comic Sans MS', sans-serif;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 2px solid #f4a1c2;
+            border-radius: 12px;
+            font-size: 18px;
+            color: #333;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            border-color: #f06292; /* Soft pink focus border */
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #f06292; /* Soft pink button */
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #f48fb1; /* Light pink on hover */
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+            font-family: 'Comic Sans MS', sans-serif;
+        }
+
+        .error {
+            color: #e91e63; /* Bright red for error messages */
+            font-weight: bold;
+        }
+
+        .success {
+            color: #388e3c; /* Green for success messages */
+            font-weight: bold;
+        }
+
+        .cute-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: #f06292;
+        }
+
+        .heart {
+            color: #f48fb1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="cute-icon">
+            ❤️
+        </div>
+        <h1>Scientific Number Validator</h1>
+        <input type="text" id="numberInput" placeholder="Enter a scientific number here!">
+        <button onclick="validateScientificNumber()">Validate</button>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+        function validateScientificNumber() {
+            const input = document.getElementById('numberInput').value;
+            const message = document.getElementById('message');
+
+            // Regular expression for scientific notation
+            const scientificRegex = /^[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?$/;
+
+            if (scientificRegex.test(input)) {
+                message.textContent = 'Yay! This number is in scientific format! 🎉';
+                message.className = 'message success';
+            } else {
+                message.textContent = 'Oops! That\'s not a valid scientific number. Please try again. 😢';
+                message.className = 'message error';
+            }
+        }
+    </script>
+
+</body>
+</html>
